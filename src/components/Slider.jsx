@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material'
 import { useState } from 'react'
 import styledComponents from 'styled-components'
 import { sliderItems } from './../data'
-import { mobile } from './../responsive'
+import { mobile, tablet } from './../responsive'
 
 //   Elements
 const Container = styledComponents.div`
@@ -42,14 +42,19 @@ const Slide = styledComponents.div`
   background-color: #${(props) => props.bg};`
 const ImgContainer = styledComponents.div`
   flex: 1;
-  height: 100%;`
+  height: 100%;
+  width: 50%;`
 const Image = styledComponents.img`
-  height: 100%;`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;`
 const InfoContainer = styledComponents.div`
   flex: 1;
-  padding: 50px;`
+  padding: 50px;
+  width: 50%;`
 const Title = styledComponents.h1`
-  font-size: 70px;`
+  font-size: 70px;
+  ${tablet({ fontSize: '50px' })}}`
 const Description = styledComponents.p`
   margin: 50px 0;
   font-size: 20px;
