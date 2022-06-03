@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styledComponents from 'styled-components'
 import { mobile } from './../responsive'
 
@@ -25,22 +26,16 @@ flex-direction: column;`
 const Title = styledComponents.h1`
 color: #fff;
 margin-bottom: 20px;`
-const Button = styledComponents.button`
-border: none;
-padding: 10px;
-background: #fff;
-color: gray;
-cursor: pointer;
-font-weight: 600;`
 
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>Shop Now</Button>
-      </Info>
+      <Link to={`/products/${item.cat}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+        </Info>
+      </Link>
     </Container>
   )
 }
