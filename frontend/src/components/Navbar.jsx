@@ -1,7 +1,9 @@
 import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
+import { useSelector } from 'react-redux'
 import styledComponents from 'styled-components'
 import { mobile } from '../responsive'
+import { Link } from 'react-router-dom'
 
 // Elements
 const Container = styledComponents.div`
@@ -50,9 +52,15 @@ const MenuItem = styledComponents.div`
 font-size: 14px;
 cursor: pointer;
 margin-left: 25px;
+& > a {
+  text-decoration: none;
+  color: #000;
+}
   ${mobile({ fontSize: '12px', marginLeft: '10px' })}`
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity)
+
   return (
     <Container>
       <Wrapper>
@@ -67,13 +75,19 @@ const Navbar = () => {
           <Logo>Buyify.</Logo>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign in</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color='primary'>
-              <ShoppingCartOutlined />
-            </Badge>
+            <Link to='/register'>Register</Link>
           </MenuItem>
+          <MenuItem>
+            <Link to='/login'>Sign in</Link>
+          </MenuItem>
+          <Link to='/cart'>
+            <MenuItem>
+              <Badge badgeContent={quantity} color='primary'>
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
