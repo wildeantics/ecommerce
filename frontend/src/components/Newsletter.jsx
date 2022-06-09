@@ -33,7 +33,13 @@ const Button = styledComponents.button`
 flex: 2;
 border: none;
 background-color: teal;
-color: #fff;`
+color: #fff;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+&:hover {
+  background-color: #f5f5f5;
+  color: teal;
+}`
 
 const Newsletter = () => {
   return (
