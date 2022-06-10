@@ -1,25 +1,8 @@
 import './featuredInfo.css'
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material'
+import { features } from '../../dummyData'
 
 export default function FeaturedInfo() {
-  const features = [
-    {
-      title: 'Revenue',
-      money: '$1',
-      rate: '2',
-    },
-    {
-      title: 'Sales',
-      money: '$11',
-      rate: '22',
-    },
-    {
-      title: 'Cost',
-      money: '$111',
-      rate: '222',
-    },
-  ]
-
   return (
     <div className='featured'>
       {features.map((feature) => (

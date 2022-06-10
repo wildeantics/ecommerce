@@ -13,46 +13,89 @@ import {
   WorkOutline,
   Report,
 } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
   const menus = [
     {
       title: 'Dashboard',
       links: [
-        { icon: <LineStyle className='sidebarIcon' />, for: 'Home' },
-        { icon: <Timeline className='sidebarIcon' />, for: 'Analytics' },
-        { icon: <TrendingUp className='sidebarIcon' />, for: 'Sales' },
+        { icon: <LineStyle className='sidebarIcon' />, for: 'Home', to: '/' },
+        {
+          icon: <Timeline className='sidebarIcon' />,
+          for: 'Analytics',
+          to: '',
+        },
+        {
+          icon: <TrendingUp className='sidebarIcon' />,
+          for: 'Sales',
+          to: '',
+        },
       ],
     },
     {
       title: 'Quick Menu',
       links: [
-        { icon: <PermIdentity className='sidebarIcon' />, for: 'Users' },
-        { icon: <Storefront className='sidebarIcon' />, for: 'Products' },
+        {
+          icon: <PermIdentity className='sidebarIcon' />,
+          for: 'Users',
+          to: '/users',
+        },
+        {
+          icon: <Storefront className='sidebarIcon' />,
+          for: 'Products',
+          to: '/products',
+        },
         {
           icon: <AttachMoney className='sidebarIcon' />,
           for: 'Transactions',
+          to: '',
         },
-        { icon: <BarChart className='sidebarIcon' />, for: 'Reports' },
+        {
+          icon: <BarChart className='sidebarIcon' />,
+          for: 'Reports',
+          to: '',
+        },
       ],
     },
     {
       title: 'Notifications',
       links: [
-        { icon: <MailOutline className='sidebarIcon' />, for: 'Mail' },
-        { icon: <DynamicFeed className='sidebarIcon' />, for: 'Feedback' },
+        {
+          icon: <MailOutline className='sidebarIcon' />,
+          for: 'Mail',
+          to: '',
+        },
+        {
+          icon: <DynamicFeed className='sidebarIcon' />,
+          for: 'Feedback',
+          to: '',
+        },
         {
           icon: <ChatBubbleOutline className='sidebarIcon' />,
           for: 'Messages',
+          to: '',
         },
       ],
     },
     {
       title: 'Staff',
       links: [
-        { icon: <WorkOutline className='sidebarIcon' />, for: 'Manage' },
-        { icon: <Timeline className='sidebarIcon' />, for: 'Analytics' },
-        { icon: <Report className='sidebarIcon' />, for: 'Reports' },
+        {
+          icon: <WorkOutline className='sidebarIcon' />,
+          for: 'Manage',
+          to: '',
+        },
+        {
+          icon: <Timeline className='sidebarIcon' />,
+          for: 'Analytics',
+          to: '',
+        },
+        {
+          icon: <Report className='sidebarIcon' />,
+          for: 'Reports',
+          to: '',
+        },
       ],
     },
   ]
@@ -66,8 +109,10 @@ export default function Sidebar() {
             <ul className='sidebarList'>
               {menu.links.map((link) => (
                 <li className='sidebarListItem' key={link.for}>
-                  {link.icon}
-                  {link.for}
+                  <Link to={link.to} className='sidebarLinks'>
+                    {link.icon}
+                    {link.for}
+                  </Link>
                 </li>
               ))}
             </ul>

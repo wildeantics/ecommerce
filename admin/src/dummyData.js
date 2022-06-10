@@ -48,3 +48,44 @@ export const userData = [
     'Active Users': 1,
   },
 ]
+export const productData = [
+  {
+    name: 'Jan',
+    sales: 4000,
+  },
+  {
+    name: 'Feb',
+    sales: 3000,
+  },
+  {
+    name: 'Mar',
+    sales: 2000,
+  },
+]
+export const features = [
+  {
+    title: 'Revenue',
+    money: '$1',
+    rate: '2',
+  },
+  {
+    title: 'Sales',
+    money: '$11',
+    rate: '22',
+  },
+  {
+    title: 'Cost',
+    money: '$111',
+    rate: '222',
+  },
+]
+export const rows = [
+  {
+    id: 1,
+    name: 'Apple Airpods',
+    img: 'https://avatars.githubusercontent.com/u/50982333?v=4',
+    stock: 123,
+    status: 'active',
+    price: '$1,000,000',
+  },
+]

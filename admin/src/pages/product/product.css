@@ -1,0 +1,139 @@
+.product {
+  flex: 4;
+  padding: 20px;
+}
+.productTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.productAddButton {
+  width: 80px;
+  border: none;
+  padding: 5px;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.productTop {
+  display: flex;
+}
+.productTopLeft,
+.productTopRight {
+  flex: 1;
+}
+
+.productTopRight {
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  margin: 20px;
+}
+.productInfoImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.productInfoTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.productName {
+  font-weight: 600;
+}
+
+.productInfoBottom {
+  width: 100%;
+  margin-top: 10px;
+}
+.productInfoItem {
+  display: flex;
+  justify-content: space-between;
+}
+.productInfoValue {
+  font-weight: 300;
+}
+
+.productBottom {
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  margin: 20px;
+}
+
+.productForm {
+  display: flex;
+  justify-content: space-between;
+}
+.productFormLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  margin-right: 20px;
+}
+.productFormLeft > label {
+  margin: 10px 0 5px 0;
+  color: gray;
+  font-size: 14px;
+}
+.productUpdateInput {
+  border: none;
+  border-bottom: 1px solid rgba(0, 128, 128, 0.2);
+  padding: 5px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+.productUpdateInput:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid teal;
+}
+.productFormRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex: 1;
+}
+.productUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.productUploadImg {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 25%;
+  object-fit: cover;
+}
+.productUpdateUploadIconContainer {
+  position: relative;
+  margin-bottom: 20px;
+}
+.productUpdateUploadIcon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(194, 194, 194, 0.9);
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.productUpdateButton {
+  width: 100px;
+  border: none;
+  padding: 5px;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
