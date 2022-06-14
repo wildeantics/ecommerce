@@ -1,9 +1,23 @@
 import './widgetLg.css'
+import { useState, useEffect } from 'react'
+import { userRequest } from '../../hooks/requestMethods'
+import { format } from 'timeago.js'
 
 export default function WidgetLg() {
   const Button = ({ type }) => {
     return <button className={`widgetLgButton ${type}`}>{type}</button>
   }
+  const [orders, setOrders] = useState([])
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get('/orders')
+        setOrders(res.data)
+      } catch (error) {}
+    }
+    getOrders()
+  }, [])
 
   return (
     <div className='widgetLg'>
@@ -16,21 +30,23 @@ export default function WidgetLg() {
             <th className='widgetLgTh'>Amount</th>
             <th className='widgetLgTh'>Status</th>
           </tr>
-          <tr className='widgetLgTr'>
-            <td className='widgetLgUser'>
-              <img
-                src='https://avatars.githubusercontent.com/u/50982333?v=4'
-                alt=''
-                className='widgetLgImg'
-              />
-              <span className='widgetLgName'>John Doe</span>
-            </td>
-            <td className='widgetLgDate'>12/12/2019</td>
-            <td className='widgetLgAmount'>$100</td>
-            <td className='widgetLgStatus'>
-              <Button type='Approved' />
-            </td>
-          </tr>
+          {orders.map((order) => (
+            <tr className='widgetLgTr' key={order._id}>
+              <td className='widgetLgUser'>
+                <img
+                  src='https://avatars.githubusercontent.com/u/50982333?v=4'
+                  alt=''
+                  className='widgetLgImg'
+                />
+                <span className='widgetLgName'>{order.userId}</span>
+              </td>
+              <td className='widgetLgDate'>{format(order.createdAt)}</td>
+              <td className='widgetLgAmount'>{order.amount}</td>
+              <td className='widgetLgStatus'>
+                <Button type={order.status} />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -1,0 +1,17 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.loginInput {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.loginButton {
+  padding: 10px;
+  width: 100px;
+  background-color: teal;
+  color: white;
+}

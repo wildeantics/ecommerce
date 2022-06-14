@@ -28,6 +28,8 @@
 .sidebarLinks {
   color: black;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 .sidebarListItem {
   padding: 5px;
