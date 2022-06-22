@@ -58,20 +58,20 @@ width: 40px;
     color: #fff;
   }`
 
-const Product = ({ item }) => {
+const Product = ({ item, key }) => {
   return (
-    <Container>
+    <Container key={key}>
       <Circle />
       <Image src={item.img} alt={item.name} />
       <Info>
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
-        <Icon>
-          <Link to={`/product/${item._id}`}>
+        <Link to={`/product/${item._id}`}>
+          <Icon>
             <SearchOutlined />
-          </Link>
-        </Icon>
+          </Icon>
+        </Link>
         <Icon>
           <FavoriteBorderOutlined />
         </Icon>

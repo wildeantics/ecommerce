@@ -7,7 +7,7 @@ import Navbar from './../components/Navbar'
 import { mobile } from './../responsive'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { publicRequest } from './../hooks/requestMethods'
+import { publicRequest } from '../redux/requestMethods'
 import { addProduct } from '../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 
@@ -62,7 +62,7 @@ const AddContainer = styledComponents.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
+  width: 100%;
   ${mobile({ width: '100%' })}`
 const AmountContainer = styledComponents.div`
   display: flex;
@@ -82,43 +82,43 @@ border: 2px solid teal;
 background-color: white;
 cursor: pointer;
 font-weight: 500;
-transition: all 0.2s ease-in-out;
+transition: all 0.3s ease-in-out;
 &:hover {
     background-color: teal;
     color: white;
+font-weight: 600;
 }`
 
 const Product = () => {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
   const [product, setProduct] = useState({})
-  const [amount, setAmount] = useState(1)
-  const [size, setSize] = useState('')
+  const [quantity, setQuantity] = useState(1)
   const [color, setColor] = useState('')
+  const [size, setSize] = useState('')
   const dispatch = useDispatch()
-
-  const handleClick = () => {
-    dispatch(
-      addProduct({
-        ...product,
-        amount,
-        size,
-        color,
-      })
-    )
-  }
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get('/products/find/' + id)
         setProduct(res.data)
-      } catch (err) {
-        console.log(err)
-      }
+      } catch {}
     }
     getProduct()
   }, [id])
+
+  const handleQuantity = (type) => {
+    if (type === 'dec') {
+      quantity > 1 && setQuantity(quantity - 1)
+    } else {
+      setQuantity(quantity + 1)
+    }
+  }
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity, color, size }))
+  }
 
   return (
     <Container>
@@ -135,28 +135,24 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              {product.colors?.map((color) => (
-                <FilterColor
-                  color={color}
-                  key={color}
-                  onClick={() => setColor(color)}
-                />
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.sizes?.map((size) => (
-                  <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove onClick={amount > 1 && (() => setAmount(amount - 1))} />
-              <Amount>{amount}</Amount>
-              <Add onClick={() => setAmount(amount + 1)} />
+              <Remove onClick={() => handleQuantity('dec')} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity('inc')} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>

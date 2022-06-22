@@ -7,7 +7,7 @@ import { mobile } from './../responsive'
 import { useSelector } from 'react-redux'
 import StripeCheckout from 'react-stripe-checkout'
 import { useEffect, useState } from 'react'
-import { userRequest } from '../hooks/requestMethods'
+import { userRequest } from '../redux/requestMethods'
 import { useNavigate } from 'react-router-dom'
 
 //   Elements
