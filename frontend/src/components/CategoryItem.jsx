@@ -25,7 +25,8 @@ justify-content: center;
 flex-direction: column;`
 const Title = styledComponents.h1`
 color: #fff;
-margin-bottom: 20px;`
+margin-bottom: 20px;
+text-align: center`
 
 const CategoryItem = ({ item }) => {
   return (
