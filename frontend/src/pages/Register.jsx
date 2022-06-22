@@ -1,5 +1,6 @@
 import styledComponents from 'styled-components'
 import { mobile } from './../responsive'
+import { Link } from 'react-router-dom'
 
 //   Elements
 const Container = styledComponents.div`
@@ -35,12 +36,24 @@ padding: 10px;`
 const Agreement = styledComponents.span`
 font-size: 12px;
 margin: 20px 0;`
+const ButtonContainer = styledComponents.div`
+width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
 const Button = styledComponents.button`
-width: 40%;
+width: 100%;
 border: none;
 padding: 15px 20px;
 background-color: teal;
 color: #fff;
+cursor: pointer;`
+const ButtonClear = styledComponents.button`
+width: 100%;
+border: 2px solid black;
+padding: 15px 20px;
+background-color: transparent;
+color: #000;
 cursor: pointer;`
 
 const Register = () => {
@@ -59,7 +72,14 @@ const Register = () => {
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>Register</Button>
+          <ButtonContainer>
+            <Link to='/' style={{ width: '40%' }}>
+              <ButtonClear>Back</ButtonClear>
+            </Link>
+            <Link to='/' style={{ width: '40%' }}>
+              <Button>Register</Button>
+            </Link>
+          </ButtonContainer>
         </Form>
       </Wrapper>
     </Container>

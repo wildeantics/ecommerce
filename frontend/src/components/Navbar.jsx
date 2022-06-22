@@ -1,9 +1,10 @@
 import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styledComponents from 'styled-components'
 import { mobile } from '../responsive'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout, reset } from './../redux/auth/authSlice'
 
 // Elements
 const Container = styledComponents.div`
@@ -32,6 +33,9 @@ margin-left: 25px;
 padding: 5px;`
 const Input = styledComponents.input`
 border: none;
+&:focus {
+  outline: none;
+}
   ${mobile({ width: '50px' })}`
 
 const Center = styledComponents.div`
@@ -40,7 +44,12 @@ align-items: center;
 text-align: center;`
 const Logo = styledComponents.h1`
 font-weight: bold;
-  ${mobile({ fontSize: '20px' })}`
+& > a {
+  color: #000;
+text-decoration: none;
+}
+  ${mobile({ fontSize: '20px' })}
+  `
 
 const Right = styledComponents.div`
 flex: 1;
@@ -60,6 +69,15 @@ margin-left: 25px;
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const user = true
+  // const { user } = useSelector((state) => state.user)
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
 
   return (
     <Container>
@@ -72,9 +90,14 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Buyify.</Logo>
+          <Logo>
+            <Link to='/'>Buyify.</Link>
+          </Logo>
         </Center>
         <Right>
+          <MenuItem>
+            <Link to='/admin'>Admin</Link>
+          </MenuItem>
           <MenuItem>
             <Link to='/register'>Register</Link>
           </MenuItem>

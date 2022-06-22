@@ -8,6 +8,7 @@ import {
 } from '@mui/icons-material'
 import styledComponents from 'styled-components'
 import { mobile } from './../responsive'
+import { Link } from 'react-router-dom'
 
 const Container = styledComponents.div`
 display: flex;
@@ -68,15 +69,21 @@ const Footer = () => {
         <Logo>Buyify.</Logo>
         <Description>Built in React using Material UI</Description>
         <SocialContainer>
-          <SocialIcon color='0d1117'>
-            <GitHub />
-          </SocialIcon>
-          <SocialIcon color='16161d'>
-            <Public />
-          </SocialIcon>
-          <SocialIcon color='0f66be'>
-            <LinkedIn />
-          </SocialIcon>
+          <a href='https://github.com/wildeantics'>
+            <SocialIcon color='0d1117'>
+              <GitHub />
+            </SocialIcon>
+          </a>
+          <a href='https://wilde.mx'>
+            <SocialIcon color='16161d'>
+              <Public />
+            </SocialIcon>
+          </a>
+          <a href='https://www.linkedin.com/in/morganwilde/'>
+            <SocialIcon color='0f66be'>
+              <LinkedIn />
+            </SocialIcon>
+          </a>
         </SocialContainer>
       </Left>
       <Center>
@@ -84,8 +91,8 @@ const Footer = () => {
         <List>
           <ListItem>Home</ListItem>
           <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
+          <ListItem>Men's Fashion</ListItem>
+          <ListItem>Women' Fashion</ListItem>
           <ListItem>Accessories</ListItem>
           <ListItem>My Account</ListItem>
           <ListItem>Order Tracking</ListItem>
